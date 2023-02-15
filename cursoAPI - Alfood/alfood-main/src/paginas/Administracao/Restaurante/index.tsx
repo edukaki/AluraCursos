@@ -1,4 +1,5 @@
 import {
+	Button,
 	Table,
 	TableBody,
 	TableCell,
@@ -27,12 +28,22 @@ const AdministracaoRestaurante = () => {
 				<TableHead>
 					<TableRow>
 						<TableCell>Nome</TableCell>
+						<TableCell>Editar</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{restaurantes.map((restaurante, index) => (
 						<TableRow key={index}>
 							<TableCell>{restaurante.nome}</TableCell>
+							<TableCell>
+								<Button
+									href={`/admin/restaurantes/${restaurante.id}`}
+									type="button"
+									variant="outlined"
+								>
+									Editar
+								</Button>
+							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
