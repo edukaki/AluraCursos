@@ -11,12 +11,14 @@ import React, { useEffect, useState } from "react";
 import IRestaurante from "../../../interfaces/IRestaurante";
 
 const AdministracaoRestaurante = () => {
+	const url = "http://localhost:8000/api/v2/restaurantes/";
 	const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
 
 	useEffect(() => {
 		axios
-			.get<IRestaurante[]>("http://localhost:8000/api/v2/restaurantes/")
-			.then((resposta) => setRestaurantes(resposta.data));
+			.get<IRestaurante[]>(url)
+			.then((resposta) => setRestaurantes(resposta.data))
+			.catch((erro) => console.log(erro));
 	}, []);
 
 	return (
