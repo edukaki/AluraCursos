@@ -14,6 +14,7 @@ function App() {
 				element={<AdministracaoRestaurante />}
 			/>
 			<Route path="/admin/restaurantes/novo" element={<NovoRestaurante />} />
+			<Route path="/admin/restaurantes/:formId" element={<NovoRestaurante />} />
 		</Routes>
 	);
 }
