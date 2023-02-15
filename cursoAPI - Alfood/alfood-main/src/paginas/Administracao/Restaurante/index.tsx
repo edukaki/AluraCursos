@@ -1,5 +1,6 @@
 import {
 	Button,
+	IconButton,
 	Table,
 	TableBody,
 	TableCell,
@@ -7,6 +8,7 @@ import {
 	TableHead,
 	TableRow,
 } from "@mui/material";
+import { DeleteOutline } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import IRestaurante from "../../../interfaces/IRestaurante";
@@ -14,6 +16,20 @@ import IRestaurante from "../../../interfaces/IRestaurante";
 const AdministracaoRestaurante = () => {
 	const url = "http://localhost:8000/api/v2/restaurantes/";
 	const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
+
+	const excluirRestaurante = (restauranteExcluido: IRestaurante) => {
+		axios
+			.delete(
+				`http://localhost:8000/api/v2/restaurantes/${restauranteExcluido.id}/`
+			)
+			.then(() => {
+				const listaRestaurante = restaurantes.filter(
+					(restaurante) => restaurante.id !== restauranteExcluido.id
+				);
+				setRestaurantes([...listaRestaurante]);
+			})
+			.then(() => alert("Restaurante excluido com sucesso"));
+	};
 
 	useEffect(() => {
 		axios
@@ -43,7 +59,18 @@ const AdministracaoRestaurante = () => {
 								>
 									Editar
 								</Button>
+								<IconButton
+									type="button"
+									onClick={() => {
+										excluirRestaurante(restaurante);
+									}}
+									aria-label="delete"
+									size="large"
+								>
+									<DeleteOutline fontSize="inherit" />
+								</IconButton>
 							</TableCell>
+							<TableCell></TableCell>
 						</TableRow>
 					))}
 				</TableBody>
