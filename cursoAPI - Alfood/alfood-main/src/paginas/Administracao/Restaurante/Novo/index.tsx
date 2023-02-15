@@ -7,8 +7,8 @@ import IRestaurante from "../../../../interfaces/IRestaurante";
 const NovoRestaurante = () => {
 	const parametros = useParams();
 	const url = `http://localhost:8000/api/v2/restaurantes/${
-		parametros.formId ? parametros.formId : ""
-	}/`;
+		parametros.formId ? parametros.formId + "/" : ""
+	}`;
 	const [nomeRestaurante, setNomeRestaurante] = useState<string>("");
 
 	useEffect(() => {
@@ -16,9 +16,8 @@ const NovoRestaurante = () => {
 			axios
 				.get<IRestaurante>(url)
 				.then((resposta) => setNomeRestaurante(resposta.data.nome))
-				.then(() => console.log(nomeRestaurante))
 				.catch((erro) => console.log(erro));
-	}, [parametros]);
+	}, [parametros, url]);
 
 	const submeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
 		evento.preventDefault();
