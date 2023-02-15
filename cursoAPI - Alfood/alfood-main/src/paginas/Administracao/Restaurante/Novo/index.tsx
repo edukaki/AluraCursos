@@ -1,12 +1,18 @@
 import { Button, TextField } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
 
 const NovoRestaurante = () => {
+	const url = "http://localhost:8000/api/v2/restaurantes/";
 	const [nomeRestaurante, setNomeRestaurante] = useState<string>("");
 	const submeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
 		evento.preventDefault();
-		console.log("enviar dados api");
-		console.log(nomeRestaurante);
+		axios
+			.post(url, {
+				nome: nomeRestaurante,
+			})
+			.then(() => alert("Restaurante cadastrado com sucesso"))
+			.catch((erro) => console.log(erro));
 	};
 
 	return (
