@@ -12,6 +12,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import IRestaurante from "../../../interfaces/IRestaurante";
 import http from "../../../http";
+import { Box } from "@mui/system";
 
 const AdministracaoRestaurante = () => {
 	const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
@@ -36,43 +37,52 @@ const AdministracaoRestaurante = () => {
 	}, []);
 
 	return (
-		<TableContainer>
-			<Table>
-				<TableHead>
-					<TableRow>
-						<TableCell>Nome</TableCell>
-						<TableCell>Editar</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{restaurantes.map((restaurante, index) => (
-						<TableRow key={index}>
-							<TableCell>{restaurante.nome}</TableCell>
-							<TableCell>
-								<Button
-									href={`/admin/restaurantes/${restaurante.id}`}
-									type="button"
-									variant="outlined"
-								>
-									Editar
-								</Button>
-								<IconButton
-									type="button"
-									onClick={() => {
-										excluirRestaurante(restaurante);
-									}}
-									aria-label="delete"
-									size="large"
-								>
-									<DeleteOutline fontSize="inherit" />
-								</IconButton>
-							</TableCell>
-							<TableCell></TableCell>
+		<Box>
+			<Button
+				href={`/admin/restaurantes/novo}`}
+				type="button"
+				variant="outlined"
+			>
+				Novo
+			</Button>
+			<TableContainer>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell>Nome</TableCell>
+							<TableCell>Editar</TableCell>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+					</TableHead>
+					<TableBody>
+						{restaurantes.map((restaurante, index) => (
+							<TableRow key={index}>
+								<TableCell>{restaurante.nome}</TableCell>
+								<TableCell>
+									<Button
+										href={`/admin/restaurantes/${restaurante.id}`}
+										type="button"
+										variant="outlined"
+									>
+										Editar
+									</Button>
+									<IconButton
+										type="button"
+										onClick={() => {
+											excluirRestaurante(restaurante);
+										}}
+										aria-label="delete"
+										size="large"
+									>
+										<DeleteOutline fontSize="inherit" />
+									</IconButton>
+								</TableCell>
+								<TableCell></TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</Box>
 	);
 };
 
