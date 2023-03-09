@@ -6,12 +6,24 @@ function handleErr(err) {
 }
 
 function getFile(path) {
-	fs.readFile(path, "utf-8", (err, data) => {
-		if (err) {
+	fs.promises
+		.readFile(path, "utf-8")
+		.then((text) => {
+			console.log(chalk.green(text));
+		})
+
+		.catch((err) => {
 			handleErr(err);
-		}
-		console.log(chalk.green(data));
-	});
+		});
 }
+
+// function getFile(path) {
+// 	fs.readFile(path, "utf-8", (err, data) => {
+// 		if (err) {
+// 			handleErr(err);
+// 		}
+// 		console.log(chalk.green(data));
+// 	});
+// }
 
 getFile("./src/text.md");
