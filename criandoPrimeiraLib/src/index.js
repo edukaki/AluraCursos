@@ -45,4 +45,4 @@ async function getFile(path) {
 // 	});
 // }
 
-getFile("./src/text.md");
+export default getFile;
