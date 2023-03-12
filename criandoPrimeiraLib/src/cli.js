@@ -9,14 +9,18 @@ async function fileProcess(arg) {
 
 	if (fs.lstatSync(path).isFile()) {
 		const result = await getFile(path);
-		console.log(chalk.yellow("List of links"), result);
+		print(result);
 	} else if (fs.lstatSync(path).isDirectory()) {
 		const files = await fs.promises.readdir(path);
 		files.map(async (file) => {
 			const result = await getFile(path + file);
-			console.log(chalk.yellow("list of links"), result);
+			print(result);
 		});
 	}
+}
+
+function print(result) {
+	console.log(chalk.yellow("list of links"), result);
 }
 
 fileProcess(path);
