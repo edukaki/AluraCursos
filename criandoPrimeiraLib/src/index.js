@@ -9,7 +9,7 @@ function getLinks(text) {
 			[item[1]]: [item[2]],
 		};
 	});
-	return result;
+	return result.length === 0 ? "no links found" : result;
 }
 
 function handleErr(err) {
