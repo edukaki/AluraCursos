@@ -19,7 +19,7 @@ function handleErr(err) {
 async function getFile(path) {
 	try {
 		const response = await fs.promises.readFile(path, "utf-8");
-		console.log(getLinks(response));
+		return getLinks(response);
 	} catch {
 		handleErr(err);
 	}
