@@ -21,13 +21,17 @@ async function fileProcess(arg) {
 		const files = await fs.promises.readdir(path);
 		files.map(async (file) => {
 			const result = await getFile(path + file);
-			print(result);
+			print(result, file);
 		});
 	}
 }
 
-function print(result) {
-	console.log(chalk.yellow("list of links"), result);
+function print(result, file = "") {
+	console.log(
+		file && chalk.black.bgGreen(file + ":"),
+		chalk.yellow("list of links"),
+		result
+	);
 }
 
 fileProcess(path);
