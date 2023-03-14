@@ -28,13 +28,14 @@ async function fileProcess(arg) {
 	}
 }
 
-function print(validate, result, file = "") {
+async function print(validate, result, file = "") {
 	if (validate) {
-		console.log(
-			file && chalk.black.bgGreen(file + ":"),
-			chalk.yellow("validated links"),
-			validatedList(result)
-		);
+		result !== "no links found" &&
+			console.log(
+				file && chalk.black.bgGreen(file + ":"),
+				chalk.yellow("validated links"),
+				await validatedList(result)
+			);
 	} else {
 		console.log(
 			file && chalk.black.bgGreen(file + ":"),
