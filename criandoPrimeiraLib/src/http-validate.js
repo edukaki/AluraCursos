@@ -3,17 +3,22 @@ function getLinksFromArray(arrLinks) {
 }
 
 function testLinks(arrLinks) {
-	console.log(arrLinks);
-	arrLinks.forEach((link) => {
-		fetch(link)
-			.then((response) => {
-				console.log(response.status);
-			})
-			.catch((error) => {});
-	});
+	const status = Promise.all(
+		arrLinks.map(async (link) => {
+			try {
+				const response = await fetch(link);
+				return response.status;
+			} catch (error) {}
+		})
+	);
+	return status;
 }
 
-export default function validatedList(list) {
+export default async function validatedList(list) {
 	const arrLinks = getLinksFromArray(list);
-	return testLinks(arrLinks);
+	const status = await testLinks(arrLinks);
+	return list.map((object, index) => ({
+		...object,
+		status: status[index] || "Link Not Found",
+	}));
 }
