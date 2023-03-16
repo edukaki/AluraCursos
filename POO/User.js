@@ -13,6 +13,8 @@ export default class User {
 	}
 
 	getInformation() {
-		return `Name: ${this.name} Email: ${this.email} Born Date: ${this.bornDate} Role: ${this.role}`;
+		return `Name: ${this.#name} Email: ${this.#email} Born Date: ${
+			this.#bornDate
+		} Role: ${this.#role}`;
 	}
 }
