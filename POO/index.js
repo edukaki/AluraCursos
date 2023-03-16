@@ -9,4 +9,9 @@ const newUser = new User(
 	"student",
 	true
 );
+
+newUser.name = "John Doe";
+// newUser.firstName = "Jo";
+
 console.log(newUser.getInformation());
+// console.log(newUser.name);
