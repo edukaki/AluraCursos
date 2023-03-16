@@ -12,9 +12,18 @@ export default class User {
 		this.#active = active;
 	}
 
+	#mountObjectUser() {
+		return {
+			name: this.#name,
+			email: this.#email,
+			bornDate: this.#bornDate,
+			role: this.#role,
+			active: this.#active,
+		};
+	}
+
 	getInformation() {
-		return `Name: ${this.#name} Email: ${this.#email} Born Date: ${
-			this.#bornDate
-		} Role: ${this.#role}`;
+		const objUser = this.#mountObjectUser();
+		return `Name: ${objUser.name} Email: ${objUser.email} Born Date: ${objUser.bornDate} Role: ${objUser.role}`;
 	}
 }
