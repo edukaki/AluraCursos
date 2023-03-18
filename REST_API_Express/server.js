@@ -1,19 +1,7 @@
-"use strict";
-import http from "http";
+import app from "./src/app.js";
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-const routes = {
-	"/": "Hello World",
-	"/about": "About Us",
-	"/contact": "Contact Us",
-};
-
-const server = http.createServer((req, res) => {
-	res.writeHead(200, { "content-type": "text/plain" });
-	req.url in routes ? res.end(routes[req.url]) : res.end("404 Not Found");
-});
-
-server.listen(port, () => {
-	console.log(`Server running at port ${port}`);
+app.listen(port, () => {
+	console.log(`Server running at port http://localhost:${port}`);
 });
