@@ -4,7 +4,7 @@ import deleteProduct from "./productsController.js";
 const createButton = (index) => {
 	const button = document.createElement("button");
 	button.classList.add(`product__item__button`);
-	button.textContent = "add product";
+	button.textContent = "delete product";
 	button.addEventListener("click", (event) => {
 		event.preventDefault();
 		deleteProduct(index);
