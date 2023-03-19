@@ -11,7 +11,7 @@ class BookController {
 		try {
 			res.status(200).json(await books.findById(req.params._id));
 		} catch (error) {
-			res.status(404).json({ title: error.message });
+			res.status(400).json({ title: error.message });
 		}
 	};
 
