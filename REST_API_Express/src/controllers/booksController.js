@@ -1,0 +1,27 @@
+import books from "../models/Book.js";
+
+class BookController {
+	static getBooks = async (req, res) => {
+		try {
+			res.status(200).json(await books.find({}));
+		} catch (error) {}
+	};
+
+	static getBooksById = async (req, res) => {
+		try {
+			res.status(200).json(await books.findById(req.params._id));
+		} catch (error) {
+			res.status(404).json({ title: error.message });
+		}
+	};
+
+	static insertNewBook = async (req, res) => {
+		try {
+			res.status(201).json(await books.create(req.body));
+		} catch (error) {
+			res.status(404).json({ title: error.message });
+		}
+	};
+}
+
+export default BookController;
