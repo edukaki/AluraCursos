@@ -22,6 +22,24 @@ class BookController {
 			res.status(404).json({ title: error.message });
 		}
 	};
+
+	static updateBook = async (req, res) => {
+		try {
+			res
+				.status(200)
+				.json(await books.findByIdAndUpdate(req.params._id, req.body));
+		} catch (error) {
+			res.status(404).json({ title: error.message });
+		}
+	};
+
+	static deleteBook = async (req, res) => {
+		try {
+			res.status(200).json(await books.findByIdAndDelete(req.params._id));
+		} catch (error) {
+			res.status(404).json({ title: error.message });
+		}
+	};
 }
 
 export default BookController;
