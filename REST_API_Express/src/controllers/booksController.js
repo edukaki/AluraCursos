@@ -19,7 +19,7 @@ class BookController {
 		try {
 			res.status(201).json(await books.create(req.body));
 		} catch (error) {
-			res.status(404).json({ title: error.message });
+			res.status(500).json({ title: error.message });
 		}
 	};
 
@@ -29,7 +29,7 @@ class BookController {
 				.status(200)
 				.json(await books.findByIdAndUpdate(req.params._id, req.body));
 		} catch (error) {
-			res.status(404).json({ title: error.message });
+			res.status(500).json({ title: error.message });
 		}
 	};
 
@@ -37,7 +37,7 @@ class BookController {
 		try {
 			res.status(200).json(await books.findByIdAndDelete(req.params._id));
 		} catch (error) {
-			res.status(404).json({ title: error.message });
+			res.status(500).json({ title: error.message });
 		}
 	};
 }
