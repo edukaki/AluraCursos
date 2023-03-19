@@ -1,0 +1,43 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	width: 100%;
+}
+
+main {
+	padding-inline: 20px;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 20px;
+	padding-block: 10px;
+	background-color: black;
+	color: aliceblue;
+}
+.logo {
+	background-color: aqua;
+	width: 40px;
+	height: 40px;
+}
+
+.link-list {
+	width: fit-content;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-direction: row;
+	list-style: none;
+	gap: 10px;
+}
+
+.link-item {
+}
